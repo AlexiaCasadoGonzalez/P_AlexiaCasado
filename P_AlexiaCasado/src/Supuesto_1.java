@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
@@ -19,7 +20,7 @@ import java.util.concurrent.TimeUnit;
 public class Supuesto_1 
 {
 	
-	
+	DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 	/**
 	 * CONSTRUCTOR
 	 */
@@ -35,7 +36,6 @@ public class Supuesto_1
 	{
 		boolean i,f1,f2;
 		Scanner entradaEscaner = new Scanner (System.in);
-		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		String entrada_1 = "";
 		String entrada_2 = "";
 		Date fecha_1 = null,fecha_2 = null;
@@ -73,8 +73,15 @@ public class Supuesto_1
 		}
 		
 		//Calculo de la diferencia de fechas
-		long dias = diferenciaFechas(fecha_1, fecha_2);
-		System.out.println(dias);
+		//long dias = diferenciaFechas(fecha_1, fecha_2);
+		//System.out.println("Diferencia de dias entre las dos fechas: " + dias +" dias");
+		
+		//Inicio y fin de año
+		System.out.println("Inicio de año de la fecha " + fecha_1+ ": " + inicioFecha(fecha_1));
+		System.out.println("Inicio de año de la fecha " + fecha_2+ ": " + inicioFecha(fecha_2));
+		
+		System.out.println("Inicio de año de la fecha " + fecha_1+ ": " + finFecha(fecha_1));
+		System.out.println("Inicio de año de la fecha " + fecha_2+ ": " + finFecha(fecha_2));
 		
 	}
 	/**
@@ -111,6 +118,48 @@ public class Supuesto_1
 		long dias = ChronoUnit.DAYS.between(dateBefore, dateAfter);
 		
 		return dias;
+		
+	}
+	
+	/**
+	 * 
+	 * @param fecha
+	 * @return
+	 */
+	public Date inicioFecha(Date fecha)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(fecha);
+		int anio= cal.get(Calendar.YEAR);
+		String anioS = anio +"/01/01";
+		try {
+			fecha = format.parse(anioS);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fecha;
+		
+	}
+	
+	/**
+	 * 
+	 * @param fecha
+	 * @return
+	 */
+	public Date finFecha(Date fecha)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(fecha);
+		int anio= cal.get(Calendar.YEAR);
+		String anioS = anio +"/12/31";
+		try {
+			fecha = format.parse(anioS);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return fecha;
 		
 	}
 }
