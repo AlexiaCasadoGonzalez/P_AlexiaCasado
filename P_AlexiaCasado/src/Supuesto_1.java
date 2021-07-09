@@ -1,7 +1,12 @@
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 /**
  * ESTA CLASE SE ENCARGARA DE MANEJAR FECHAR EN FORMATO DATE
@@ -24,14 +29,16 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * EJERCICIO 1: SE REALIZARA UN CONTROL DE ERRORES DE LA FECHA INTRODUCCIDA, PARA ELLO SE USARA UN WHILE
+	 * EJERCICIO 1: SE REALIZARA UN CONTROL DE ERRORES DE LA FECHA INTRODUCCIDA, PARA ELLO SE USARA UN WHILE. DESPUES INVOCARA LOS METODOS QUE CUMPLAN TODOS LAS PARTES DEL EJERCICIO
 	 */
 	public void Ejercicio_1()
 	{
 		boolean i,f1,f2;
-		Scanner entradaEscaner = new Scanner (System.in); 
+		Scanner entradaEscaner = new Scanner (System.in);
+		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 		String entrada_1 = "";
 		String entrada_2 = "";
+		Date fecha_1 = null,fecha_2 = null;
 		
 		i = false;
 		
@@ -56,7 +63,18 @@ public class Supuesto_1
 				System.out.println("Ha introducido el formato de las fechas de forma erronea");
 		}
 		
-		 System.out.print(entrada_1 + " " + entrada_2);
+		//Pasamos los string al formato Date
+		try {
+			fecha_1 = format.parse(entrada_1);
+			fecha_2 = format.parse(entrada_2);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		//Calculo de la diferencia de fechas
+		long dias = diferenciaFechas(fecha_1, fecha_2);
+		System.out.println(dias);
 		
 	}
 	/**
@@ -77,6 +95,22 @@ public class Supuesto_1
             return false;
         }
         return true;
+		
+	}
+	
+	/**
+	 * 
+	 * @param fecha_1: PRIMERA FECHA INTRODUCIDA POR CONSOLA
+	 * @param fecha_2: SEGUNDA FECHA INTRODUCIDA POR CONSOLA
+	 * @return INT CON EL NUMERO DE DIAS DE DIFERENCIA ENTRE LAS DOS FECHAS
+	 */
+	public long diferenciaFechas(Date fecha_1, Date fecha_2)
+	{
+		LocalDate dateBefore = fecha_1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate dateAfter = fecha_2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		long dias = ChronoUnit.DAYS.between(dateBefore, dateAfter);
+		
+		return dias;
 		
 	}
 }
