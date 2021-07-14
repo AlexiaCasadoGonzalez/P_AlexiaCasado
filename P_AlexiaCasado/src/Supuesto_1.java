@@ -7,7 +7,6 @@ import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 /**
  * ESTA CLASE SE ENCARGARA DE MANEJAR FECHAR EN FORMATO DATE
@@ -31,8 +30,9 @@ public class Supuesto_1
 	
 	/**
 	 * EJERCICIO 1: SE REALIZARA UN CONTROL DE ERRORES DE LA FECHA INTRODUCCIDA, PARA ELLO SE USARA UN WHILE. DESPUES INVOCARA LOS METODOS QUE CUMPLAN TODOS LAS PARTES DEL EJERCICIO
+	 * @throws ParseException 
 	 */
-	public void Ejercicio_1()
+	public void Ejercicio_1() throws ParseException
 	{
 		boolean i,f1,f2;
 		Scanner entradaEscaner = new Scanner (System.in);
@@ -63,26 +63,40 @@ public class Supuesto_1
 				System.out.println("Ha introducido el formato de las fechas de forma erronea");
 		}
 		
+		entradaEscaner.close();
 		//Pasamos los string al formato Date
-		try {
-			fecha_1 = format.parse(entrada_1);
-			fecha_2 = format.parse(entrada_2);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		fecha_1 = format.parse(entrada_1);
+		fecha_2 = format.parse(entrada_2);
 		
 		//Calculo de la diferencia de fechas
-		//long dias = diferenciaFechas(fecha_1, fecha_2);
-		//System.out.println("Diferencia de dias entre las dos fechas: " + dias +" dias");
+		long dias = diferenciaFechas(fecha_1, fecha_2);
+		System.out.println("");
+		System.out.println("Diferencia de dias entre las dos fechas: " + dias +" dias");
+		System.out.println("");
 		
 		//Inicio y fin de año
-		System.out.println("Inicio de año de la fecha " + fecha_1+ ": " + inicioFecha(fecha_1));
-		System.out.println("Inicio de año de la fecha " + fecha_2+ ": " + inicioFecha(fecha_2));
+		System.out.println("Inicio de año de la fecha " + entrada_1+ ": " + inicioFecha(fecha_1));
+		System.out.println("Inicio de año de la fecha " + entrada_2+ ": " + inicioFecha(fecha_2));
 		
-		System.out.println("Inicio de año de la fecha " + fecha_1+ ": " + finFecha(fecha_1));
-		System.out.println("Inicio de año de la fecha " + fecha_2+ ": " + finFecha(fecha_2));
+		System.out.println("Final de año de la fecha " + entrada_1+ ": " + finFecha(fecha_1));
+		System.out.println("Final de año de la fecha " + entrada_2+ ": " + finFecha(fecha_2));
+		System.out.println("");
 		
+		//Dias desde comenzo y finalizo el año
+		System.out.println("Fecha: "+ entrada_1);
+		diasInicioFin(fecha_1);
+		System.out.println("Fecha: "+ entrada_2);
+		diasInicioFin(fecha_2);
+		System.out.println("");
+		
+		//Numero de dias
+		anioBisiesto(fecha_1);
+		anioBisiesto(fecha_2);
+		System.out.println("");
+		
+		//Numero de semanas entre las fechas
+		long semanas = semanasFecha(fecha_1, fecha_2);
+		System.out.println("Diferencia de semanas entre las dos fechas: " + semanas +" semanas");
 	}
 	/**
 	 * 
@@ -123,43 +137,91 @@ public class Supuesto_1
 	
 	/**
 	 * 
-	 * @param fecha
-	 * @return
+	 * @param fecha: INTRODUCIDA POR CONSOLA
+	 * @return FECHA DE INCIO DE AÑO
 	 */
-	public Date inicioFecha(Date fecha)
+	public String inicioFecha(Date fecha)
 	{
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(fecha);
 		int anio= cal.get(Calendar.YEAR);
 		String anioS = anio +"/01/01";
-		try {
-			fecha = format.parse(anioS);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return fecha;
+		
+		return anioS;
+		
+	}
+	
+	/**
+	 * 
+	 * @param fecha: INTRODUCIDA POR CONSOLA
+	 * @return FECHA DE FIN DE AÑO
+	 */
+	public String finFecha(Date fecha)
+	{
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(fecha);
+		int anio= cal.get(Calendar.YEAR);
+		String anioS = anio +"/12/31";
+		return anioS;
+		
+	}
+	
+	/**
+	 * 
+	 * @param fecha: INTRODUCIDA POR CONSOLA
+	 */
+	public void anioBisiesto(Date fecha)
+	{
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(fecha);
+		int anio= cal.get(Calendar.YEAR);
+		
+		if ((anio % 4 == 0) && ((anio % 100 != 0) || (anio % 400 == 0)))
+			System.out.println("El año es bisiesto, tiene 366 dias");
+		else
+			System.out.println("El año no es bisiesto, tiene 365 dias");
+		
+	}
+	
+	/**
+	 * 
+	 * @param fecha_1: PRIMERA FECHA INTRODUCIDA POR CONSOLA
+	 * @param fecha_2: SEGUNDA FECHA INTRODUCIDA POR CONSOLA
+	 * @return Número de semanas entre las fechas
+	 */
+	public long semanasFecha(Date fecha_1, Date fecha_2) 
+	{
+		LocalDate dateBefore = fecha_1.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate dateAfter = fecha_2.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		
+		long semanas = ChronoUnit.WEEKS.between(dateBefore, dateAfter);
+		return semanas;
 		
 	}
 	
 	/**
 	 * 
 	 * @param fecha
-	 * @return
 	 */
-	public Date finFecha(Date fecha)
+	public void diasInicioFin(Date fecha)
 	{
-		Calendar cal = Calendar.getInstance();
-		cal.setTime(fecha);
-		int anio= cal.get(Calendar.YEAR);
-		String anioS = anio +"/12/31";
+		String inicio = inicioFecha(fecha);
+		String fin = finFecha(fecha);
+		Date fechaInicio = null,fechaFin = null;
+		
 		try {
-			fecha = format.parse(anioS);
+			fechaInicio = format.parse(inicio);
+			fechaFin = format.parse(fin);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return fecha;
 		
+		long diasInicio = diferenciaFechas(fechaInicio,fecha);
+		long diasFin = diferenciaFechas(fecha,fechaFin);
+		
+		System.out.println("Días de desde el inicio de año: " + diasInicio);
+		System.out.println("Días de hasta el fin de año: " + diasFin);
 	}
 }
