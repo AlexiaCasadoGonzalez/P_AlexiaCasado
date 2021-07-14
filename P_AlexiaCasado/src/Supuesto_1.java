@@ -9,11 +9,11 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- * ESTA CLASE SE ENCARGARA DE MANEJAR FECHAR EN FORMATO DATE
+ * ESTA CLASE SE ENCARGARA DE MANEJAR FECHAR EN FORMATO DATE Y UTILIZANDO CALENDAR, PARA CUMPLIR LAS DIFERENTES PARTES DE EJERCICIO.
  */
 /**
  * @author Alexia Casado Gonzalez
- * @version 1.0
+ * @version 1.1
  *
  */
 public class Supuesto_1 
@@ -202,7 +202,7 @@ public class Supuesto_1
 	
 	/**
 	 * 
-	 * @param fecha
+	 * @param fecha: FECHA INTRODUCIDA POR CONSOLA
 	 */
 	public void diasInicioFin(Date fecha)
 	{
@@ -218,6 +218,7 @@ public class Supuesto_1
 			e.printStackTrace();
 		}
 		
+		//Reutilización de otros metodos
 		long diasInicio = diferenciaFechas(fechaInicio,fecha);
 		long diasFin = diferenciaFechas(fecha,fechaFin);
 		
