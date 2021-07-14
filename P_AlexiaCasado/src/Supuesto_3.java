@@ -1,3 +1,4 @@
+import java.util.Calendar;
 
 /**
  * 
@@ -21,11 +22,11 @@ public class Supuesto_3
 				+ "primera vez en 1995 por Sun Microsystems. Hay muchas aplicaciones y sitios web que no funcionarán, probablemente, "
 				+ "a menos que tengan Java instalado y cada día se crean más. Java es rápido, seguro y fiable";
 
-		System.out.println("Número de caracteres del texto: " + texto.length());//Cambiar número de caracteres con la funcion lenght
+		System.out.println("Número de caracteres del texto: \n" + texto.length());//Cambiar número de caracteres con la funcion lenght
 		System.out.println();
-		System.out.println("Texto en mayusculas: " + texto.toUpperCase());//Cambiar el texto a mayusculas con UpperCase
+		System.out.println("Texto en mayusculas: \n" + texto.toUpperCase());//Cambiar el texto a mayusculas con UpperCase
 		System.out.println();
-		System.out.println("Texto en minusculas: " + texto.toLowerCase());//Cambiar el texto a minusculas con LowerCase
+		System.out.println("Texto en minusculas: \n" + texto.toLowerCase());//Cambiar el texto a minusculas con LowerCase
 		System.out.println();
 		
 		//Hacemos un array con las palabras del texto, quitando las comas y los puntos.
@@ -45,17 +46,36 @@ public class Supuesto_3
 		         if(word[i].equals(word[j]))//comparamos ambas palabras
 		         {
 		        	 count=count+1;
-		               word[j]="0";//Renplazamos las palabras repetidas con ceros, para no volverlas a contar
+		               word[j]="0";//Remplazamos las palabras repetidas con ceros, para no volverlas a contar
 		         }
 	         }
 	         
 	         if(word[i]!="0" && count > 1)
 	        	 System.out.print("'"+ word[i] + "' ");
 	         
-	         count=1;//Volvemos el contador a 1 otra vez
-	         
-	  }
+	         count=1;//Volvemos el contador a 1 otra vez     
+	   }
 		
-	
+		System.out.println("\n");
+		System.out.println("Remplazamos 'Java' por 'Avaj': \n" + texto.replace("Java", "Avaj"));
+		
+		long t1, t2, dif;
+		//Inicio del tiempo
+		Calendar ahora1 = Calendar.getInstance();
+        t1 = ahora1.getTimeInMillis();
+        String concatTexto = texto;
+
+		for(int n = 0; n<100;n++)
+		{
+			concatTexto = concatTexto.concat(texto);
+		}
+		
+		//Fin del tiempo
+		Calendar ahora2 = Calendar.getInstance();
+        t2 = ahora2.getTimeInMillis();
+        dif = t2 - t1;
+        
+        System.out.printf("\nHa tardado: %.3f segundos concatenar 100 veces el texto", (double)dif/1000);
+        System.out.println("Número de caracteres del texto: \n" + concatTexto.length());
 	}
 }
