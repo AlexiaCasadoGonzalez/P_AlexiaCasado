@@ -1,4 +1,6 @@
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -11,6 +13,7 @@ import java.util.Scanner;
  */
 public class Menu 
 {
+	
 	/**
 	 * CONTRUCTOR
 	 */
@@ -22,6 +25,7 @@ public class Menu
 	public void inicio() throws ParseException
 	{
 		Scanner sn = new Scanner(System.in);
+		
 	    boolean salir = false;
 	    int op;
 	    Supuesto_1 s1 = new Supuesto_1();
