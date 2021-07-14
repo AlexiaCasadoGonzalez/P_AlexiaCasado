@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 /**
  * @author Alexia Casado González
- * @version 1.0
+ * @version 1.2
  */
 public class Menu 
 {
@@ -22,12 +22,13 @@ public class Menu
 	public void inicio() throws ParseException
 	{
 		Scanner sn = new Scanner(System.in);
-	    boolean salir = false;
+	    /*boolean salir = false;
 	    int op;
-	    Supuesto_1 s1 = new Supuesto_1();
-		
+	    Supuesto_1 s1 = new Supuesto_1();*/
+	    Supuesto_2 s2 = new Supuesto_2();
+	    s2.Ejercicio_2();
 	        
-	       while(!salir)
+	      /* while(!salir)
 	       {
 	            
 	           System.out.println("1. Supuesto 1");
@@ -48,6 +49,8 @@ public class Menu
 	                   break;
 	               case 2:
 	                   System.out.println("Has seleccionado la supuesto 2");
+	                   s2.Ejercicio_2();
+	                   salir=true;
 	                   break;
 	                case 3:
 	                   System.out.println("Has seleccionado la supuesto 3");
@@ -62,7 +65,7 @@ public class Menu
 	                   System.out.println("Solo números entre 1 y 6");
 	           }
 	            
-	       }
+	       }*/
 	       sn.close();
 	       
 	}
