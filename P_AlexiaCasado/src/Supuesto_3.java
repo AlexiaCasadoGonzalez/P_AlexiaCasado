@@ -14,4 +14,9 @@ public class Supuesto_3
 	{
 		
 	}
+	
+	public void ejercicio_3()
+	{
+		
+	}
 }

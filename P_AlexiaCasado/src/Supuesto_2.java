@@ -20,7 +20,7 @@ public class Supuesto_2
 	/**
 	 * ESTE METODO SE ENCARGARA DE LLAMAR A LOS DIFERENTES METODOS Y CONSEGUIR LOS NÚMEROS DE MANERA CORRECTA POR CONSOLA.
 	 */
-	public void Ejercicio_2()
+	public void ejercicio_2()
 	{
 		boolean i = false,f1,f2,f3;
 		Scanner entradaEscaner = new Scanner (System.in);

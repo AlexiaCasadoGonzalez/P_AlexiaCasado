@@ -32,7 +32,7 @@ public class Supuesto_1
 	 * EJERCICIO 1: SE REALIZARA UN CONTROL DE ERRORES DE LA FECHA INTRODUCCIDA, PARA ELLO SE USARA UN WHILE. DESPUES INVOCARA LOS METODOS QUE CUMPLAN TODOS LAS PARTES DEL EJERCICIO
 	 * @throws ParseException 
 	 */
-	public void Ejercicio_1() throws ParseException
+	public void ejercicio_1() throws ParseException
 	{
 		boolean i,f1,f2;
 		Scanner entradaEscaner = new Scanner (System.in);

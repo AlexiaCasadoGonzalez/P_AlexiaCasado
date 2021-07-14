@@ -26,8 +26,9 @@ public class Menu
 	    int op;
 	    Supuesto_1 s1 = new Supuesto_1();
 	    Supuesto_2 s2 = new Supuesto_2();
-	        
-	      while(!salir)
+	    Supuesto_3 s3 = new Supuesto_3();
+	    s3.ejercicio_3(); 
+	     /* while(!salir)
 	       {
 	            
 	           System.out.println("1. Supuesto 1");
@@ -43,16 +44,18 @@ public class Menu
 	           {
 	               case 1:
 	                   System.out.println("Has seleccionado la supuesto 1");
-	           			s1.Ejercicio_1();
+	           			s1.ejercicio_1();
 	           			salir=true;
 	                   break;
 	               case 2:
 	                   System.out.println("Has seleccionado la supuesto 2");
-	                   s2.Ejercicio_2();
+	                   s2.ejercicio_2();
 	                   salir=true;
 	                   break;
 	                case 3:
 	                   System.out.println("Has seleccionado la supuesto 3");
+	                   s3.ejercicio_3();
+	                   salir=true;
 	                   break;
 	                case 4:
 		               System.out.println("Has seleccionado la supuesto 4");
@@ -64,7 +67,7 @@ public class Menu
 	                   System.out.println("Solo números entre 1 y 6");
 	           }
 	            
-	       }
+	       }*/
 	       sn.close();
 	       
 	}
