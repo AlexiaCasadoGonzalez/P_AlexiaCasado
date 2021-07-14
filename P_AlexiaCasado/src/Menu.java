@@ -27,8 +27,9 @@ public class Menu
 	    Supuesto_1 s1 = new Supuesto_1();
 	    Supuesto_2 s2 = new Supuesto_2();
 	    Supuesto_3 s3 = new Supuesto_3();
-	    s3.ejercicio_3(); 
-	     /* while(!salir)
+	    Supuesto_4 s4 = new Supuesto_4();
+	    s4.ejercicio_4();
+	    /*while(!salir)
 	       {
 	            
 	           System.out.println("1. Supuesto 1");
@@ -42,6 +43,7 @@ public class Menu
 	            
 	           switch(op)
 	           {
+	           
 	               case 1:
 	                   System.out.println("Has seleccionado la supuesto 1");
 	           			s1.ejercicio_1();
