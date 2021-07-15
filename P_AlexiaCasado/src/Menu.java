@@ -33,7 +33,8 @@ public class Menu
 	    Supuesto_3 s3 = new Supuesto_3();
 	    Supuesto_4 s4 = new Supuesto_4();
 	    Supuesto_5 s5 = new Supuesto_5();
-	    s5.ejercicio_5();
+	    Supuesto_6 s6 = new Supuesto_6();
+	    s6.ejercicio_6();
 	    /*while(!salir)
 	       {
 	            
@@ -42,6 +43,7 @@ public class Menu
 	           System.out.println("3. Supuesto 3");
 	           System.out.println("4. Supuesto 4");
 	           System.out.println("5. Supuesto 5");
+	           System.out.println("6. Supuesto 6");
 	            
 	           System.out.println("Escribe una de las opciones");
 	           op = sn.nextInt();
@@ -72,6 +74,11 @@ public class Menu
 	                case 5:
 		               System.out.println("Has seleccionado la supuesto 5");
 		               s5.ejercicio_5();
+		               salir=true;
+		               break;
+		            case 6:
+		               System.out.println("Has seleccionado la supuesto 6");
+		               s6.ejercicio_6();
 		               salir=true;
 		               break;
 	                default:
