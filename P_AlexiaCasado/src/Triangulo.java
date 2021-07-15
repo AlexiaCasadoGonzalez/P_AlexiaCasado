@@ -12,7 +12,7 @@ public class Triangulo
 	int lado2;
 	int lado3;
 	String tipo;//Equilatero, isosceles o escaleno
-	int area;
+	double area;
 	int perimetro;
 	
 	public Triangulo()
@@ -20,7 +20,7 @@ public class Triangulo
 		
 	}
 	
-	public Triangulo(int lado1, int lado2, int lado3, String tipo, int area, int perimetro) {
+	public Triangulo(int lado1, int lado2, int lado3, String tipo, double area, int perimetro) {
 		super();
 		this.lado1 = lado1;
 		this.lado2 = lado2;
@@ -66,7 +66,7 @@ public class Triangulo
 		return area;
 	}
 
-	public void setArea(int area) {
+	public void setArea(double area) {
 		this.area = area;
 	}
 

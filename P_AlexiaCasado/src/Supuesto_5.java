@@ -4,7 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 /**
- * 
+ * ESTA CLASE SE ENCARGARA DE MOSTRAR LAS PROPIEDADES DE VARIAS FIGURAS GEOMETRICAS, CON CARACTERISTICAS ALEATORIAS.
  */
 /**
  * @author Alexia Casado Gonzalez
@@ -98,8 +98,9 @@ public class Supuesto_5
 	 */
 	public void generarTriangulos(int num)
 	{
-		int lado1, lado2, lado3, area,perimetro;
+		int lado1, lado2, lado3,perimetro;
 		int semiP;
+		double area;
 		String tipo;
 		for(int i=0; i <num;i++)
 		{	
@@ -114,8 +115,10 @@ public class Supuesto_5
 			perimetro = lado1 + lado2 + lado3;
 			
 			semiP = perimetro/2; 
+			semiP = semiP*(semiP-lado1)*(semiP-lado2)*(semiP-lado3);
 			
-			area= (int) (Math.sqrt(semiP)*(semiP-lado1)*(semiP-lado2)*(semiP-lado3));//El calculo del area no esta bien :(
+			area= (Math.sqrt(semiP));//Cambio del area a double,formula algo erronea :(
+			area = Math.round(area * 100.0) / 100.0;
 			
 			if(lado1 == lado2 && lado2 == lado3)
 				tipo = "Equilatero";
