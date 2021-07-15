@@ -65,6 +65,7 @@ public class Menu
 	                   break;
 	                case 4:
 		               System.out.println("Has seleccionado la supuesto 4");
+		               s4.ejercicio_4();
 		               break;
 	                case 5:
 		               System.out.println("Has seleccionado la supuesto 5");
