@@ -33,11 +33,14 @@ public class Supuesto_4
 		
 		while(!salir)
 		{
+			System.out.println("Menu de la tienda");
+			System.out.println("--------------------------------------------------");
 	           System.out.println("1. Añadir Cliente");
 	           System.out.println("2. Borrar Cliente");
 	           System.out.println("3. Editar Cliente");
 	           System.out.println("4. Listar Cliente");
 	           System.out.println("5. Salir");
+	           System.out.println("--------------------------------------------------");
 	            
 	           System.out.println("Escribe una de las opciones");
 	           op = inputScanner.nextInt();
@@ -47,30 +50,37 @@ public class Supuesto_4
 	           
 	               case 1:
 	                   System.out.println("Has seleccionado añadir cliente");
+	                   System.out.println("--------------------------------------------------");
 	                   aniadirCliente();
 	                   break;
 	               case 2:
 	                   System.out.println("Has seleccionado borrar cliente");
+	                   System.out.println("--------------------------------------------------");
 	                   borrarCliente();
 	                   break;
 	                case 3:
 	                   System.out.println("Has seleccionado editar cliente");
+	                   System.out.println("--------------------------------------------------");
 	                   editarCliente();
 	                   break;
 	                case 4:
 		               System.out.println("Has seleccionado listar cliente");
+		               System.out.println("--------------------------------------------------");
 		               listaCliente();
 		               break;
 	                case 5:
 		               System.out.println("Hasta la proxima!");
+		               System.out.println("--------------------------------------------------");
 		               salir = true;
 		               break;
 	                default:
 	                   System.out.println("Solo números entre 1 y 5");
+	                   System.out.println("--------------------------------------------------");
 	           }
 	            
 		}
 	}
+	
 	/**
 	 * Añade un cliente, con los datos 
 	 */
@@ -96,8 +106,11 @@ public class Supuesto_4
 		System.out.println("Introduzca el nombre del cliente");
 		nombre = inputScanner.next();
 		
-		System.out.println("Introduzca los apellidos del cliente");
+		System.out.println("Introduzca el primer apellido del cliente");
 		apellidos = inputScanner.next();
+		
+		System.out.println("Introduzca el segundo apellido del cliente");
+		apellidos = apellidos + " " + inputScanner.next();
 
 		//Cambiamos salir a false para entrar en el bucle
 		salir = false;
@@ -129,7 +142,7 @@ public class Supuesto_4
 		if(tipo.contentEquals("R"))
 		{
 			tipo = "Registrado";
-			cuota = "100 euros";
+			cuota = "100";
 		}
 		else if(tipo.contentEquals("S"))
 		{
@@ -156,7 +169,7 @@ public class Supuesto_4
 		
 		for(int i = 0; i < listaClientes.size();i++)
 		{
-			if(listaClientes.get(i).DNI == dni)
+			if(listaClientes.get(i).DNI.equals(dni))
 				listaClientes.remove(i);
 				
 		}
@@ -172,14 +185,132 @@ public class Supuesto_4
 		for(int i=0;i<listaClientes.size();i++)
 		{
 			System.out.println("--------------------------------------------------");
-			System.out.println("|" + listaClientes.get(i).DNI+ "|"+ listaClientes.get(i).nombre +"|"+ listaClientes.get(i).apellidos+ "|"+ listaClientes.get(i).tipo +"|"+ listaClientes.get(i).cuotaMaxima + "|"+ listaClientes.get(i).fechaAlta+ "|");
+			System.out.println("|" + listaClientes.get(i).DNI+ "|   "+ listaClientes.get(i).nombre +"   |"+ listaClientes.get(i).apellidos+ "|"+ listaClientes.get(i).tipo +"|   "+ listaClientes.get(i).cuotaMaxima + "  |  "+ listaClientes.get(i).fechaAlta+ "     |");
 			System.out.println("--------------------------------------------------");
 		}
 	}
 
+	/**
+	 * Editar clientes, en un principio se pretencia crear un objeto Cliente para guardar el que coincidiera con el dni de la ListaClientes, pero luego se penso que seria mas comodo guardar el par aposicion de ese cliente y modificarlo en la lista.
+	 */
 	public void editarCliente()
 	{
+		String dni,tipo,fecha;
+		boolean salir = true,opciones = false;
+		int op,id = 0;
+		//Cliente c = new Cliente();
 		
+		System.out.println("Introduzca el DNI del cliente");
+		dni = inputScanner.next();
+		
+		//Buscamos el cliente que coincida el dni introducido
+		for(int i = 0; i < listaClientes.size();i++)
+		{
+			if(listaClientes.get(i).DNI.equals(dni))//Encontramos la coincidencia y podremos entrar en el bucle para el menu de modificar.
+			{
+				//c = listaClientes.get(i);
+				//listaClientes.remove(i);
+				id = i;
+				salir = false;
+			}
+			else
+				System.out.println("No se ha encontrado ningun cliente con ese DNI");
+				
+		}
+		//Menu para modificar las diferentes partes
+		while(!salir)
+		{
+			System.out.println("--------------------------------------------------");
+				System.out.println("¿Que desea modificar?");
+	           System.out.println("1. Cambiar el DNI");
+	           System.out.println("2. Cambiar el nombre");
+	           System.out.println("3. Cambiar los apellido ");
+	           System.out.println("4. Cambiar el tipo");
+	           System.out.println("5. Cambiar la fecha de alta");
+	           System.out.println("6. Salir");
+	            
+	           System.out.println("Escribe una de las opciones");
+	           op = inputScanner.nextInt();
+	            
+	           switch(op)
+	           {
+	           
+	               case 1:
+	                   //Añadimos dni nuevo como lo haciemos en el metodo aniadirCliente
+	                   while(!opciones)
+		           		{
+	                	   System.out.println("Escriba el DNI");
+	                	   dni = inputScanner.next();
+		           			
+		           			if(validarDni(dni) == true && dniRpetido(dni) == true)
+		           			{
+		           				//VALIDACIÓN DEL DNI
+		           				listaClientes.get(id).DNI = dni;
+		           				opciones= true;	
+		           			}		
+		           			else
+		           				System.out.println("Ha introduccido mal el DNI o esta repetido");
+		           			
+		           		}
+	                   break;
+	               case 2:
+	            	   System.out.println("Escriba el nombre");
+	            	   listaClientes.get(id).nombre = inputScanner.next();
+	                   break;
+	               case 3:
+	            	   System.out.println("Escriba los apellido");//esta parte no pregunta por los apellidos por que si introduces dos apellidos separados por un espacio el programa lo interpretara
+	            	   listaClientes.get(id).apellidos = inputScanner.next();
+	            	   listaClientes.get(id).apellidos = listaClientes.get(id).apellidos + " "+ inputScanner.next();
+	                   break;
+	               case 4:
+	            	   while(!opciones)
+		           		{
+	            		   		System.out.println("Escriba el tipo");
+		           				tipo = inputScanner.next();
+		           				
+		           				if(tipo.contentEquals("R") || tipo.contentEquals("S"))//VALIDACIÓN DE TIPO DE CLIENTE
+		           				{
+		           					if(tipo.contentEquals("R"))
+		           					{
+		           						listaClientes.get(id).tipo = "Registrado";
+		           						listaClientes.get(id).cuotaMaxima = "100";
+		           					}
+		           					else if(tipo.contentEquals("S"))
+		           					{
+		           						listaClientes.get(id).tipo = "Socio";
+		           						listaClientes.get(id).cuotaMaxima = "Ilimitada";
+		           					}
+		           					opciones = true;
+		           				}
+		           				else
+		           					System.out.println("Ha introduccido mal el tipo, escriba R o S dependiendo que desee.");
+		           		}
+			           break;
+	               case 5:
+	            	   while(!opciones)
+		           		{
+	            		   System.out.println("Escriba la fecha de alta(yyyy/MM/dd)");
+		           			fecha = inputScanner.next();
+		           			
+		           			if(validarFecha(fecha) == true)//VALIDAR DEL FORMATO DE LA FECHA
+		           			{
+		           				listaClientes.get(id).fechaAlta = fecha;
+		           				opciones = true;
+		           			}
+		           			else
+		           				System.out.println("Ha introduccido mal la fecha");
+		           		}
+			           break;
+	               case 6:
+		               System.out.println("Fin de modificación");
+		               System.out.println("--------------------------------------------------");
+		               salir = true;
+		               break;
+	               default:
+	                   System.out.println("Solo números entre 1 y 7");
+	           }
+	            
+		}
 	}
 	
 	/**
@@ -265,7 +396,7 @@ public class Supuesto_4
 	{
 		for(int i = 0; i < listaClientes.size();i++)
 		{
-			if(listaClientes.get(i).DNI == dni)
+			if(listaClientes.get(i).DNI.equals(dni))
 				return false;
 		}
 		return true;
