@@ -16,7 +16,7 @@ public class Supuesto_6
 
 	public void ejercicio_6() 
 	{
-		// TODO Auto-generated method stub
+		
 		
 	}
 
