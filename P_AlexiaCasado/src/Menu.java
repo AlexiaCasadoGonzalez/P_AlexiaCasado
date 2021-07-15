@@ -32,7 +32,8 @@ public class Menu
 	    Supuesto_2 s2 = new Supuesto_2();
 	    Supuesto_3 s3 = new Supuesto_3();
 	    Supuesto_4 s4 = new Supuesto_4();
-	    s4.ejercicio_4();
+	    Supuesto_5 s5 = new Supuesto_5();
+	    s5.ejercicio_5();
 	    /*while(!salir)
 	       {
 	            
@@ -66,9 +67,12 @@ public class Menu
 	                case 4:
 		               System.out.println("Has seleccionado la supuesto 4");
 		               s4.ejercicio_4();
+		               salir=true;
 		               break;
 	                case 5:
 		               System.out.println("Has seleccionado la supuesto 5");
+		               s5.ejercicio_5();
+		               salir=true;
 		               break;
 	                default:
 	                   System.out.println("Solo números entre 1 y 6");
