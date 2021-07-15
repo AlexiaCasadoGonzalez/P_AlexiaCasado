@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  * Esta clase tiene un menu para la tienda con añadir,borrar, editar y ver clientes. Para un mejor funcionamiento se podria enlazar con una BBDD en la nube como los servicio de AWS o Firebase, sin base de datos no habra
- * persistencia en los datos añadidos
+ * persistencia en los datos añadidos. Además realizar un formulario con una interfaz mejoraria como se obtienen los datos.
  */
 /**
  * @author Alexia Casado Gonzalez
@@ -31,6 +31,7 @@ public class Supuesto_4
 		boolean salir = false;
 		int op;
 		
+		//Menu de la tienda 
 		while(!salir)
 		{
 			System.out.println("Menu de la tienda");
@@ -169,8 +170,13 @@ public class Supuesto_4
 		
 		for(int i = 0; i < listaClientes.size();i++)
 		{
-			if(listaClientes.get(i).DNI.equals(dni))
+			if(listaClientes.get(i).DNI.equals(dni))//Encontramos el DNI especifico
+			{
 				listaClientes.remove(i);
+				System.out.println("Cliente eliminado");
+			}	
+			else
+				System.out.println("No existe ese DNI en la lista");
 				
 		}
 	}
@@ -180,18 +186,19 @@ public class Supuesto_4
 	 */
 	public void listaCliente()
 	{
-		System.out.println("--------------------------------------------------");
-		System.out.println("|   DNI   |   NOMBRE   |   APELLIDOS   |   TIPO   |   CUOTA   |   FECHA DE ALTA  |");
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("|   DNI   |      NOMBRE      |      APELLIDOS      |      TIPO       |    CUOTA    |   FECHA DE ALTA  |");
 		for(int i=0;i<listaClientes.size();i++)
 		{
-			System.out.println("--------------------------------------------------");
+			System.out.println("------------------------------------------------------------------------");
 			System.out.println("|" + listaClientes.get(i).DNI+ "|   "+ listaClientes.get(i).nombre +"   |"+ listaClientes.get(i).apellidos+ "|"+ listaClientes.get(i).tipo +"|   "+ listaClientes.get(i).cuotaMaxima + "  |  "+ listaClientes.get(i).fechaAlta+ "     |");
-			System.out.println("--------------------------------------------------");
+			System.out.println("------------------------------------------------------------------------");
 		}
 	}
 
 	/**
-	 * Editar clientes, en un principio se pretencia crear un objeto Cliente para guardar el que coincidiera con el dni de la ListaClientes, pero luego se penso que seria mas comodo guardar el par aposicion de ese cliente y modificarlo en la lista.
+	 * Editar clientes, en un principio se pretencia crear un objeto Cliente para guardar el que coincidiera con el dni de la ListaClientes,
+	 *  pero luego se penso que seria mas comodo guardar el par aposicion de ese cliente y modificarlo en la lista.
 	 */
 	public void editarCliente()
 	{
