@@ -14,20 +14,30 @@ public class Cliente
 	String nombre;
 	String apellidos;
 	String tipo;
-	Date fechaAlta;
+	String fechaAlta;
+	String cuotaMaxima;
 	
 	public Cliente()
 	{
 		
 	}
 	
-	public Cliente(String DNI, String nombre, String apellidos, String tipo, Date fechaAlta) {
+	public Cliente(String DNI, String nombre, String apellidos, String tipo, String fechaAlta, String cuotaMaxima) {
 		super();
 		this.DNI = DNI;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.tipo = tipo;
 		this.fechaAlta = fechaAlta;
+		this.cuotaMaxima = cuotaMaxima;
+	}
+
+	public String getCuotaMaxima() {
+		return cuotaMaxima;
+	}
+
+	public void setCuotaMaxima(String cuotaMaxima) {
+		this.cuotaMaxima = cuotaMaxima;
 	}
 
 	public String getDNI() {
@@ -62,11 +72,11 @@ public class Cliente
 		this.tipo = tipo;
 	}
 
-	public Date getFechaAlta() {
+	public String getFechaAlta() {
 		return fechaAlta;
 	}
 
-	public void setFechaAlta(Date fechaAlta) {
+	public void setFechaAlta(String fechaAlta) {
 		this.fechaAlta = fechaAlta;
 	}
 }

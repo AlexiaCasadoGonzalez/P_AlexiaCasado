@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * 
+ * Esta clase tiene un menu para la tienda con añadir,borrar, editar y ver clientes. Para un mejor funcionamiento se podria enlazar con una BBDD en la nube como los servicio de AWS o Firebase, sin base de datos no habra
+ * persistencia en los datos añadidos
  */
 /**
  * @author Alexia Casado Gonzalez
@@ -50,12 +51,15 @@ public class Supuesto_4
 	                   break;
 	               case 2:
 	                   System.out.println("Has seleccionado borrar cliente");
+	                   borrarCliente();
 	                   break;
 	                case 3:
 	                   System.out.println("Has seleccionado editar cliente");
+	                   editarCliente();
 	                   break;
 	                case 4:
 		               System.out.println("Has seleccionado listar cliente");
+		               listaCliente();
 		               break;
 	                case 5:
 		               System.out.println("Hasta la proxima!");
@@ -67,12 +71,13 @@ public class Supuesto_4
 	            
 		}
 	}
-	
+	/**
+	 * Añade un cliente, con los datos 
+	 */
 	public void aniadirCliente()
 	{
 		boolean salir = false;
-		String dni = null,nombre = null,apellidos = null,tipo = null,fechaS = null;
-		Date fecha = null;
+		String dni = null,nombre = null,apellidos = null,tipo = null,fecha = null,cuota = null;
 		
 		//Validaremos todos los datos uno a uno, y si uno no es correcto se debera introduccir correctamente
 		//Se han utilizado varios bucles, uno para el DNI otro para el tipo de cliente y por ultimo la fecha, tanto el nombre como los apellidos no pueden estar incorrectos.
@@ -112,27 +117,69 @@ public class Supuesto_4
 		while(!salir)
 		{
 			System.out.println("Introduzca la fecha en formato (yyyy/MM/dd) de alta");
-			fechaS = inputScanner.next();
+			fecha = inputScanner.next();
 			
-			if(validarFecha(fechaS) == true)//VALIDAR DEL FORMATO DE LA FECHA
+			if(validarFecha(fecha) == true)//VALIDAR DEL FORMATO DE LA FECHA
 				salir = true;
 			else
 				System.out.println("Ha introduccido mal la fecha");
 		}
 		
-		//Tranformamos la fecha a tipo DATE
-		DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
-		try {
-			fecha = format.parse(fechaS);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		//Ponemos la cuota dependiendo del tipo del cliente
+		if(tipo.contentEquals("R"))
+		{
+			tipo = "Registrado";
+			cuota = "100 euros";
 		}
+		else if(tipo.contentEquals("S"))
+		{
+			tipo = "Socio";
+			cuota = "Ilimitada";
+		}
+			
 		
 		//Añadimos el cliente llamando a su contructor y lo añadimos a una lista de Clientes
-		System.out.println(dni +  " " + nombre  + " " + apellidos + " " + tipo  + " " + fechaS);
-		Cliente client = new Cliente(dni, nombre, apellidos, tipo, fecha);
+		System.out.println(dni +  " " + nombre  + " " + apellidos + " " + tipo  + " " + fecha);
+		Cliente client = new Cliente(dni, nombre, apellidos, tipo, fecha,cuota);
 		listaClientes.add(client);
+	}
+	
+	/**
+	 * Elimina un cliente de la lista de clientes
+	 */
+	public void borrarCliente() 
+	{
+		String dni;
+		
+		System.out.println("Introduzca el DNI del cliente");
+		dni = inputScanner.next();
+		
+		for(int i = 0; i < listaClientes.size();i++)
+		{
+			if(listaClientes.get(i).DNI == dni)
+				listaClientes.remove(i);
+				
+		}
+	}
+	
+	/**
+	 * Mostrar todos los clientes
+	 */
+	public void listaCliente()
+	{
+		System.out.println("--------------------------------------------------");
+		System.out.println("|   DNI   |   NOMBRE   |   APELLIDOS   |   TIPO   |   CUOTA   |   FECHA DE ALTA  |");
+		for(int i=0;i<listaClientes.size();i++)
+		{
+			System.out.println("--------------------------------------------------");
+			System.out.println("|" + listaClientes.get(i).DNI+ "|"+ listaClientes.get(i).nombre +"|"+ listaClientes.get(i).apellidos+ "|"+ listaClientes.get(i).tipo +"|"+ listaClientes.get(i).cuotaMaxima + "|"+ listaClientes.get(i).fechaAlta+ "|");
+			System.out.println("--------------------------------------------------");
+		}
+	}
+
+	public void editarCliente()
+	{
+		
 	}
 	
 	/**
