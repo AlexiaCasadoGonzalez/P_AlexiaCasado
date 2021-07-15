@@ -16,9 +16,14 @@ public class Cliente
 	String tipo;
 	Date fechaAlta;
 	
-	public Cliente(String dNI, String nombre, String apellidos, String tipo, Date fechaAlta) {
+	public Cliente()
+	{
+		
+	}
+	
+	public Cliente(String DNI, String nombre, String apellidos, String tipo, Date fechaAlta) {
 		super();
-		DNI = dNI;
+		this.DNI = DNI;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.tipo = tipo;
