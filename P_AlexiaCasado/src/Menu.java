@@ -33,7 +33,7 @@ public class Menu
 	    Supuesto_3 s3 = new Supuesto_3();
 	    Supuesto_4 s4 = new Supuesto_4();
 	    Supuesto_5 s5 = new Supuesto_5();
-	    Supuesto_6 s6 = new Supuesto_6();
+	    ItemSeparator s6 = new ItemSeparator();
 	    s6.ejercicio_6();
 	    /*while(!salir)
 	       {
