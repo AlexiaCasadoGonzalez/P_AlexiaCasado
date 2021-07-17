@@ -34,8 +34,9 @@ public class Menu
 	    Supuesto_4 s4 = new Supuesto_4();
 	    Supuesto_5 s5 = new Supuesto_5();
 	    ItemSeparator s6 = new ItemSeparator();
-	    s6.ejercicio_6();
-	    /*while(!salir)
+	    Supuesto_7 s7 = new Supuesto_7();
+	    
+	    while(!salir)
 	       {
 	            
 	           System.out.println("1. Supuesto 1");
@@ -44,6 +45,7 @@ public class Menu
 	           System.out.println("4. Supuesto 4");
 	           System.out.println("5. Supuesto 5");
 	           System.out.println("6. Supuesto 6");
+	           System.out.println("7. Supuesto 7");
 	            
 	           System.out.println("Escribe una de las opciones");
 	           op = sn.nextInt();
@@ -81,11 +83,16 @@ public class Menu
 		               s6.ejercicio_6();
 		               salir=true;
 		               break;
+		            case 7:
+		               System.out.println("Has seleccionado la supuesto 7");
+		               s7.ejercicio_7();
+		               salir=true;
+		               break;
 	                default:
-	                   System.out.println("Solo números entre 1 y 6");
+	                   System.out.println("Solo números entre 1 y 7");
 	           }
 	            
-	       }*/
+	       }
 	       sn.close();
 	       
 	}
