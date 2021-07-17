@@ -36,7 +36,7 @@ public class Supuesto_7
 		System.out.println("Por favor escriba 4 números diferentes uno por uno:");
         for(int i = 0; i < 4; i++)
         {
-        	System.out.print("Escriba el número "+i +":		");
+        	System.out.print("Escriba el número "+i +":	");
         	numArray[i]=inputScanner.nextInt();
         }
 		
