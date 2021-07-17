@@ -1,5 +1,5 @@
 /**
- * Objeto Cuadrado
+ * Clase Cuadrado
  */
 /**
  * @author Alexia Casado Gonzalez

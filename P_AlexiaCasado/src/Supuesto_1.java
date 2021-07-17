@@ -30,17 +30,16 @@ public class Supuesto_1
 	
 	/**
 	 * EJERCICIO 1: SE REALIZARA UN CONTROL DE ERRORES DE LA FECHA INTRODUCCIDA, PARA ELLO SE USARA UN WHILE. DESPUES INVOCARA LOS METODOS QUE CUMPLAN TODOS LAS PARTES DEL EJERCICIO
-	 * @throws ParseException 
+	 * @throws ParseException controlar los erros de Date
 	 */
 	public void ejercicio_1() throws ParseException
 	{
-		boolean i,f1,f2;
+		//Inicializamos variables
+		boolean i = false,f1,f2;
 		Scanner entradaEscaner = new Scanner (System.in);
 		String entrada_1 = "";
 		String entrada_2 = "";
 		Date fecha_1 = null,fecha_2 = null;
-		
-		i = false;
 		
 		while(i != true)
 		{
@@ -55,12 +54,12 @@ public class Supuesto_1
 			//Mensajes de error si las fechas son incorrectas
 			if(f1 == true && f2 == true)
 				i= true;
+			else if(f1 == false && f2 == false)
+				System.out.println("Ha introducido el formato de las fechas de forma erronea");
 			else if(f1 == false)
 				System.out.println("Ha introducido el formato de la fecha " + entrada_1 +" de forma erronea");
 			else if(f2 == false)
 				System.out.println("Ha introducido el formato de la fecha " + entrada_2 +" de forma erronea");
-			else if(f1 == false && f2 == false)
-				System.out.println("Ha introducido el formato de las fechas de forma erronea");
 		}
 		
 		entradaEscaner.close();
@@ -99,7 +98,7 @@ public class Supuesto_1
 		System.out.println("Diferencia de semanas entre las dos fechas: " + semanas +" semanas");
 	}
 	/**
-	 * 
+	 * Metodo que validara el formato de las fechas
 	 * @param fecha: RECIBIRA LE FECHA INTRODUCIDA POR CONSOLA
 	 * @return TRUE SI ES VALIDO EL FOMATO FALSE SI NO ES VALIDO
 	 */
@@ -120,7 +119,7 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * 
+	 * Metodo que calcurara la diferencia entre fechas
 	 * @param fecha_1: PRIMERA FECHA INTRODUCIDA POR CONSOLA
 	 * @param fecha_2: SEGUNDA FECHA INTRODUCIDA POR CONSOLA
 	 * @return INT CON EL NUMERO DE DIAS DE DIFERENCIA ENTRE LAS DOS FECHAS
@@ -136,7 +135,7 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * 
+	 * Metodo que mostrara el inicio de fecha. En este metodo de intento utilizar Date.getYear() pero esta deprecaed, entonces se utilizo Calendar.
 	 * @param fecha: INTRODUCIDA POR CONSOLA
 	 * @return FECHA DE INCIO DE AÑO
 	 */
@@ -152,7 +151,7 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * 
+	 * Metodo que mostrara el fin de fecha. En este metodo de intento utilizar Date.getYear() pero esta deprecaed, entonces se utilizo Calendar.
 	 * @param fecha: INTRODUCIDA POR CONSOLA
 	 * @return FECHA DE FIN DE AÑO
 	 */
@@ -167,7 +166,7 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * 
+	 * Metodo que comprueba cuentos dias tiene el año, es decir si es bisiesto o no.
 	 * @param fecha: INTRODUCIDA POR CONSOLA
 	 */
 	public void anioBisiesto(Date fecha)
@@ -185,7 +184,7 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * 
+	 * Metodo que calcula las semanas de diferencia entre las dos fechas. En este caso se intento usar Date.getWeek() pero esta deprecated, por lo tanto se uso LocalDate
 	 * @param fecha_1: PRIMERA FECHA INTRODUCIDA POR CONSOLA
 	 * @param fecha_2: SEGUNDA FECHA INTRODUCIDA POR CONSOLA
 	 * @return Número de semanas entre las fechas
@@ -201,7 +200,7 @@ public class Supuesto_1
 	}
 	
 	/**
-	 * 
+	 * Metodo que calcula los dias que dan para fin de año y cuando dias han pasado desde inicio de año
 	 * @param fecha: FECHA INTRODUCIDA POR CONSOLA
 	 */
 	public void diasInicioFin(Date fecha)

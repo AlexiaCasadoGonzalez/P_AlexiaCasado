@@ -1,5 +1,5 @@
 /**
- * Objeto Triangulo
+ * Clase Triangulo
  */
 /**
  * @author Alexia Casado Gonzalez

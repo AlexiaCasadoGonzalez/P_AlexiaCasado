@@ -16,6 +16,9 @@ public class Supuesto_3
 		
 	}
 	
+	/**
+	 * Este ejercicio se encargar de procesar un texto
+	 */
 	public void ejercicio_3()
 	{
 		String texto = "Java es un lenguaje de programación y una plataforma informática que fue comercializada por "

@@ -1,5 +1,5 @@
 /**
- * Objeto Circulo
+ * Clase Circulo
  */
 /**
  * @author Alexia Casado Gonzalez

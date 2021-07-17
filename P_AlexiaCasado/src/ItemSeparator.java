@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 /**
-* 
+* Esta clase leera una texto con una estructura especifica y impimira cada parte del texto en diferentes secciones.
  */
 /**
  * @author Alexia Casado Gonzalez
@@ -23,9 +23,11 @@ public class ItemSeparator
 	 */
 	public void ejercicio_6()
 	{
+		//Expresiones regulares
 		String numDouble = "^[0-9]+(.|,)?[0-9]?$";
 		String letras = "[A-Za-z ]*";
 		String numInt = "^-?\\d+$";
+
 		String texto;
 		System.out.println("Escriba un texto");
 		texto = inputScanner.nextLine();

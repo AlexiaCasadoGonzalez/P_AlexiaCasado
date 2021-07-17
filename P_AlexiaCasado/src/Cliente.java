@@ -1,6 +1,6 @@
 
 /**
- * Objeto Cliente
+ * Clase cliente
  */
 /**
  * @author Alexia Casado Gonzalez

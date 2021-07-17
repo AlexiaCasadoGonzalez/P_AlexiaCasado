@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * 
+ * Esta clase se encargara de realizar un pequeño menu para probar los supuesto seleccionados.
  */
 
 /**
@@ -28,6 +28,7 @@ public class Menu
 	    boolean salir = false;
 	    int op;
 	    
+	    //Inicializamos los supuestos
 	    Supuesto_1 s1 = new Supuesto_1();
 	    Supuesto_2 s2 = new Supuesto_2();
 	    Supuesto_3 s3 = new Supuesto_3();
@@ -54,6 +55,7 @@ public class Menu
 	           System.out.println("Escribe una de las opciones");
 	           op = sn.nextInt();
 	            
+	           //Un switch para seleccionar el supuesto escogido
 	           switch(op)
 	           {
 	           
